@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+httpx
+python-dotenv
+slowapi
+langchain
+langchain-community
+langchain-huggingface
+chromadb
+sentence-transformers
