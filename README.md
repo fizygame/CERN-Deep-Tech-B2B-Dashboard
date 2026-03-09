@@ -8,98 +8,98 @@
 
 # 🌌 CERN Deep Tech B2B Dashboard 
 
-> **Açık Kaynak İstihbarat (OSINT) ve Yapay Zeka (RAG) Destekli CERN HL-LHC Teknolojileri Ticari İzleme Paneli.**
+> **An Open Source Intelligence (OSINT) and AI (RAG) Powered Commercial Tracking Dashboard for CERN HL-LHC Technologies.**
 
-Bu proje, CERN'in Yüksek Parlaklıklı Büyük Hadron Çarpıştırıcısı (HL-LHC) kapsamında geliştirilen derin teknolojilerin (Deep Tech) ve bu teknolojiler üzerine kurulan B2B şirketlerin güncel durumlarını analiz etmek, ticari hazır bulunuşluk düzeylerini (TRL - Technology Readiness Level) canlı GitHub istatistikleriyle ölçümlemek için tasarlanmıştır. 
+This project is designed to analyze the current status of deep technologies developed within the scope of CERN's High-Luminosity Large Hadron Collider (HL-LHC) and the B2B companies founded upon these technologies. It measures their commercial Technology Readiness Levels (TRL) using live GitHub statistics.
 
-Proje, yatırımcılar (VC) ve teknoloji öncüleri için şık bir "Dark Mode" arayüzü ve yerleşik bir AI (Yapay Zeka) chatbot sunar.
+The project offers a sleek "Dark Mode" interface and a built-in AI chatbot tailored for Venture Capitalists (VCs) and technology pioneers.
 
-![Dashboard Preview](https://via.placeholder.com/1000x500.png?text=Dashboard+Preview) *(Buraya kendi projenizin ekran görüntüsünü ekleyin)*
 
----
-
-## 🚀 Özellikler (Features)
-
-1. **Canlı TRL (Teknoloji Hazırlık Seviyesi) Hesaplaması:**
-   - **Rucio, hls4ml, Geant4, BioDynaMo, C2MON, ROOT, White Rabbit** ağlarının GitHub repository verilerini (Stars, Forks, Aylık Commits) eşzamanlı çeker.
-   - Tüm bu Açık Kaynak verilerini bir araya getirerek matematiksel bir ağırlıklandırma (Weighted Matrix) algoritması ile her bir araç için 1'den 9'a kadar bir ticari **TRL skoru** hesaplar.
-
-2. **CERN Venture Connect (CVC) Sektör Matrisi:**
-   - Şirketleri Fintech, MedTech, IIoT, Telecom gibi sektörlere göre izler. **Reshape Systems, TIND, UAP** gibi şirketlerin B2B hedeflerini analiz eder.
-
-3. **Tamamen Lokal Çalışan Yapay Zeka (Local RAG):**
-   - Panel içerisindeki AI Bot (Chatbot), CERN analiz raporlarını okuyup anlayacak şekilde LangChain ve açık kaynaklı HuggingFace (`all-MiniLM-L6-v2`) modelleri kullanılarak inşa edilmiştir.
-   - Sorduğunuz soruya en yakın bağlam, internette dolaşmadan lokal **ChromaDB** vektör veritabanından getirilir. 100% KVKK ve Güvenlik prensiplerine uyar, **veri sızıntısı yapmaz.**
-
-4. **Sıfır Halüsinasyon (Zero Hallucination) Garantisi:**
-   - Sistem bir API'den limit aldığı (Rate limit) takdirde uydurma veri yerleştirmek yerine derhal "YETERLİ KANIT YOK" veya "N/A" ibarelerini yerleştirerek kurumsal doğruluktan (%100 Ground Truth) asla sapmaz.
 
 ---
 
-## 🛠️ Teknoloji Yığını (Tech Stack)
+## 🚀 Features
+
+1. **Live TRL (Technology Readiness Level) Calculation:**
+   - Simultaneously fetches GitHub repository data (Stars, Forks, Monthly Commits) of networks like **Rucio, hls4ml, Geant4, BioDynaMo, C2MON, ROOT, White Rabbit**.
+   - Aggregates all this Open Source data using a mathematical Weighted Matrix algorithm to calculate a commercial **TRL score** from 1 to 9 for each tool.
+
+2. **CERN Venture Connect (CVC) Sector Matrix:**
+   - Tracks companies across sectors such as Fintech, MedTech, IIoT, and Telecom. Analyzes the B2B targets of companies like **Reshape Systems, TIND, UAP**.
+
+3. **Fully Local Artificial Intelligence (Local RAG):**
+   - The AI Bot (Chatbot) within the dashboard is built using LangChain and open-source HuggingFace (`all-MiniLM-L6-v2`) models, specifically tailored to read and comprehend CERN analysis reports.
+   - The most relevant context for your queries is retrieved from the local **ChromaDB** vector database without browsing the internet. It complies 100% with GDPR and security principles, ensuring **no data leakage.**
+
+4. **Zero Hallucination Guarantee:**
+   - If the system encounters an API limit (Rate limit), rather than inserting fabricated data, it immediately displays "NOT ENOUGH EVIDENCE" or "N/A", never deviating from corporate accuracy (100% Ground Truth).
+
+---
+
+## 🛠️ Tech Stack
 
 ### Backend (Data Engine & AI)
-- **Python / FastAPI:** Asenkron veri çekme (async/await)
+- **Python / FastAPI:** Asynchronous data fetching (async/await)
 - **LangChain & ChromaDB:** RAG (Retrieval-Augmented Generation)
-- **HuggingFace:** Yerel (Local) Sentence-Transformers Embeddings
-- **OpenAlex & GitHub API:** Canlı ve limitsiz istihbarat verileri.
+- **HuggingFace:** Local Sentence-Transformers Embeddings
+- **OpenAlex & GitHub API:** Live and unlimited intelligence data.
 
 ### Frontend (UI/UX)
-- **React.js & Vite:** Hızlı yapılandırma
-- **Tailwind CSS:** Modern 'Glassmorphism' paneller ve B2B Dark Theme.
-- **Lucide Icons:** Semantik ikonografiler.
+- **React.js & Vite:** Rapid configuration
+- **Tailwind CSS:** Modern 'Glassmorphism' panels and B2B Dark Theme.
+- **Lucide Icons:** Semantic iconography.
 
 ---
 
-## 📦 Kurulum ve Çalıştırma (Get Started)
+## 📦 Installation and Setup (Get Started)
 
-> **ÖNEMLİ (AI Model Veritabanı İçin):** RAG sisteminin çalışması için projenin ana dizininde `data/` isimli bir klasör oluşturun ve içine **CERN analiz metninizi/raporunuzu** `cern_hl_lhc_report.txt` ismiyle kaydedin. Sistem ilk açılışta o okuyup vektörlere bölecektir.
+> **IMPORTANT (For AI Model Database):** For the RAG system to work, create a folder named `data/` in the project's root directory and save your **CERN analysis text/report** inside it as `cern_hl_lhc_report.txt`. The system will read and split it into vectors upon the first launch.
 
-Kurulum için iki seçeneğiniz vardır: **Docker (Önerilen)** veya **Manuel (Lokal)** kullanım. 
+You have two options for installation: **Docker (Recommended)** or **Manual (Local)** usage.
 
-### Seçenek 1: Docker (Tek Tıkla Kurulum)
+### Option 1: Docker (One-Click Setup)
 
-Makinenizde Docker yüklüyse, Terminal'den proje ana dizinine gelip şu komutu vermeniz yeterlidir:
+If Docker is installed on your machine, simply navigate to the project root directory from your Terminal and run this command:
 ```bash
 docker-compose up --build
 ```
-Sistem, `http://localhost:3000` portundan Frontend'i, `http://localhost:8000` üzerinden API'yi yayına alacaktır.
+The system will deploy the Frontend on `http://localhost:3000` and the API on `http://localhost:8000`.
 
-### Seçenek 2: Manuel Çalıştırma (Geliştiriciler İçin)
+### Option 2: Manual Setup (For Developers)
 
-#### 1️. Backend'i (API & RAG) Başlatma
-Proje kök dizininde bir sanal ortam oluşturup paketleri indirin:
+#### 1️. Starting the Backend (API & RAG)
+Create a virtual environment in the project root directory and install the packages:
 ```bash
 python -m venv venv
-# Ortamı aktifleştirin (Windows: venv\Scripts\activate | Mac/Linux: source venv/bin/activate)
+# Activate the environment (Windows: venv\Scripts\activate | Mac/Linux: source venv/bin/activate)
 pip install -r requirements.txt
 ```
 
-*(Opsiyonel ama Önerilen)* Proje ana dizininde bir `.env` dosyası açıp `GITHUB_TOKEN=sizin_tokeniniz` eklerseniz, GitHub'ın uyguladığı API limitlerine takılmazsınız.
+*(Optional but Recommended)* If you create a `.env` file in the project root directory and add `GITHUB_TOKEN=your_token_here`, you will circumvent GitHub's API rate limits.
 
-Sunucuyu başlatın:
+Start the server:
 ```bash
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
-API Dokümantasyonu şu an `http://localhost:8000/docs` adresinde hazır.
+API Documentation is currently ready at `http://localhost:8000/docs`.
 
-#### 2️. Frontend'i (Arayüzü) Başlatma
-Yeni bir Terminal penceresi açın ve Frontend klasörüne girin:
+#### 2️. Starting the Frontend (UI)
+Open a new Terminal window and navigate to the frontend folder:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-Uygulamayı `http://localhost:3000` adresinde kullanmaya başlayabilirsiniz!
+You can start using the application at `http://localhost:3000`!
 
 ---
 
-## 🪪 Lisans
+## 🪪 License
 
-Bu proje **MIT** lisansı altında dağıtılmaktadır. Kodları tamamen dilediğiniz gibi kullanabilir, değiştirebilir ve kendi ticari projelerinizde (ücretsiz) değerlendirebilirsiniz. Detaylar için `LICENSE` dosyasına göz atın.
+This project is distributed under the **MIT** license. You can freely use, modify, and incorporate the codes into your own commercial projects (for free) as you wish. Check the `LICENSE` file for details.
 
-💸 **Hiçbir Bulut Bağımlılığı Yoktur:** Analiz ve bot işlemleri HuggingFace üzerinden %100 lokal PC içinde yürütülür, OpenAI veya herhangi bir bulut sistemine ödeme yapmanız gerekmez. Açık veri (Open Data) prensibiyle çalışır.
+💸 **No Cloud Dependency:** Analysis and bot operations are executed 100% locally on your PC via HuggingFace; you do not need to pay OpenAI or any cloud system. It operates on the Open Data principle.
 
 ---
-**Geliştirici:** Nuri Demir  
+**Developer:** Nuri Demir  
 *Data Engineering & Deep Tech OSINT Architecture*
